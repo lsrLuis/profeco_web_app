@@ -1,0 +1,179 @@
+$def with(data)
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos</title>
+    <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body{
+                font-family: 'Roboto', sans-serif;
+                background: rgba(233,233,233,0.9);
+            }
+
+            header{
+                width: 100%;
+                height: 50px;
+                background: #333;
+                color: #fff;
+
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 100;
+            }
+
+            .contenedor{
+                width: 98%;
+                margin: auto;
+            }
+
+            h1{
+                float: left
+            }
+
+            header .contenedor{
+                display: table;
+            }
+
+            section{
+                width: 100%;
+                margin-bottom: 25px;
+            }
+
+            #bienvenidos {
+                text-align: center
+            }
+
+            @media(min-width:1024px){
+                .contenedor {
+                    width: 1000px;
+                }
+            }
+            #menu-bar{
+                display: none;
+            }
+
+            header label{
+                float: right;
+                font-size: 28px;
+                margin: 6px 0;
+                cursor: pointer;
+            }
+
+            .menu{
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(51,51,51,0.8);
+                transition: all 0.5s;
+                transform: translateX(-100%);
+            }
+
+            .menu a {
+                display: block;
+                color: #fff;
+                height: 50px;
+                text-decoration: none;
+                padding: 15px;
+                border-bottom: 1px solid rgba(255,255,255,0.5);
+            }
+
+            .menu a:hover {
+                background: rgba(255,255,255,0.5);
+            }
+
+            #menu-bar:checked ~ .menu{
+                transform: translateX(0%)
+            }
+
+            @media(min-width:1024px){
+                .menu{
+                    position:static;
+                    width: auto;
+                    height: auto;
+                    transform: translateX(0%);
+                    float: right;
+                    display: flex;
+                }
+
+                header label {
+                    display: none;
+                }
+
+                .menu a{
+                    border-bottom: none;
+                }
+            }
+            #banner{
+                margin-top: 50px;
+                position: relative;
+            }
+
+            #banner .contenedor{
+                margin-top: 142%;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                color: #fff;
+            }
+            table{
+                border: 1px solid #000;
+                border-collapse: collapse;
+                width: 90%;
+            }
+
+            table td{
+                border: 1px solid #000;
+            }
+
+            table tr:hover{
+                background: #ccc;
+            }
+
+            table td:hover{
+                background: #000;
+                color: #fff;
+            }
+        </style>
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1>Profeco</h1>
+            <input type="checkbox" id="menu-bar">
+            <label for="menu-bar">~</label>
+            <nav class="menu" >
+                <a class="click" href="/">Inicio</a>
+                <a href="data">Datos</a>
+                <a href="mapa">Mapa</a>
+                <a href="acerca">Acerca de..</a>
+            </nav>
+        </div>
+    </header>
+    <section id="banner">
+        <div class="contenedor">
+            <table border = 1px solid blue;>
+                <tr b>
+                    <td>Nombre Comercio</td>
+                    <td>Producto</td>
+                    <td>Precio</td>
+                </tr>
+                $for row in data['results']:
+                <tr>
+                    <td>$row['cadenaComercial']</td>
+                    <td>$row['producto']</td>
+                    <td>$row['precio']</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
